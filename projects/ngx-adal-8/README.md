@@ -3,16 +3,16 @@
 
 # Active Directory Authentication Library (ADAL) wrapper for (Angular X)
 
-This library is a wrapper taking consideration different scenarios of how ADAL should be used with Angular 2+ without importing adal-angular in package.json
+This library is a wrapper taking consideration different scenarios of how ADAL should be used with Angular 2+ without importing adal-angular in package.json   
+   
+   
+Reason:   
+You do not need to install  "adal-angular": "^1.0.17"    
+This library is composed of adal.js and adal-angular.js   
 
-
-Reason:
-You do not need to install  "adal-angular": "^1.0.17" 
-This library is composed of adal.js and adal-angular.js
-
-adal-angular.js is the library for AngularJS meaning anything prior to Angular 2
-adal.js is where the code we need is however since we need this file included in more than 
-one place installing this library is just plain redundant as we will still need to link 
+adal-angular.js is the library for AngularJS meaning anything prior to Angular 2     
+adal.js is where the code we need is however since we need this file included in more than    
+one place installing this library is just plain redundant as we will still need to link    
 directly to adal.js and Microsoft put it in their CDN for us or you could host it in your assets folder.
 
 https://secure.aadcdn.microsoftonline-p.com/lib/1.0.17/js/adal.min.js
