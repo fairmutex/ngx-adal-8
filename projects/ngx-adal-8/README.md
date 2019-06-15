@@ -8,7 +8,7 @@ This library is a wrapper taking consideration different scenarios of how ADAL s
    
 Reason:   
 You do not need to install  "adal-angular": "^1.0.17"    
-This library is composed of adal.js and adal-angular.js   
+as that library is composed of adal.js and adal-angular.js   
 
 adal-angular.js is the library for AngularJS meaning anything prior to Angular 2     
 adal.js is where the code we need is however since we need this file included in more than    
@@ -131,6 +131,10 @@ App that have public facing and some parts require login.
 In some component perhaps navbar.component.ts login/logout buttons
 
 ```typescript
+  constructor(private authService:NgxAdalService){
+  
+  }
+
   login(){
     this.authService.login();
   }
