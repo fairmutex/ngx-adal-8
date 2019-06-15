@@ -1,6 +1,6 @@
 {
-  "name": "ngx-adal",
-  "version": "0.0.1",
+  "name": "ngx-adal-8",
+  "version": "0.0.2",
   "peerDependencies": {
     "@angular/common": "^8.0.1",
     "@angular/core": "^8.0.1"
@@ -12,16 +12,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fairmutex/ngx-adal.git"
+    "url": "git+https://github.com/fairmutex/angular8-adal.git"
   },
   "keywords": [
-    "ADAL", "Angular", "Angular7", "Angular8","Azure AD","Authentication"
+    "ADAL",
+    "Angular",
+    "Angular7",
+    "Angular8",
+    "Azure AD",
+    "Authentication"
   ],
   "author": "Stephan Galea",
   "url": "https://www.linkedin.com/in/stephan-galea-803a308b/",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fairmutex/ngx-adal/issues"
+    "url": "https://github.com/fairmutex/angular8-adal/issues"
   },
-  "homepage": "https://github.com/fairmutex/ngx-adal#readme"
+  "homepage": "https://github.com/fairmutex/angular8-adal#readme"
 }

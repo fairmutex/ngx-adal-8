@@ -50,7 +50,7 @@ In index.html put
 In app.module.ts 
 
 ```bash
-import { NgxAdalModule } from 'ngx-adal';
+import { NgxAdalModule } from 'ngx-adal-8';
 ``` 
 
 Imports section
@@ -75,7 +75,7 @@ Without using guards
 in your app.component.ts
 
 ```typescript
-import {NgxAdalService} from 'ngx-adal';
+import {NgxAdalService} from 'ngx-adal-8';
 ``` 
 
 ```typescript
