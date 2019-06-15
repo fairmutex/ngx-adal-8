@@ -1,3 +1,6 @@
+[![NPM version][npm-image]][npm-url] 
+[![License][license-image]][license-url] 
+
 # Active Directory Authentication Library (ADAL) wrapper for (Angular X)
 
 This library is a wrapper taking consideration different scenarios of how ADAL should be used with Angular 2+ without importing adal-angular in package.json
@@ -141,6 +144,17 @@ Then use guards on the specific children routes.
 
 
 **Couldn't have done this without**
-1. Help from with AngularJS back in 2016 [Tushar Grupta](https://github.com/tushargupta51)
+1. Help with ADAL back in 2016 [Tushar Grupta](https://github.com/tushargupta51)
 2. [ms-adal-angular6](https://github.com/manishrasrani/ms-adal-angular6)
+3. Several questions/answers on GitHub
+
+
+
+
+[MIT license]: http://opensource.org/licenses/MIT
+[npm-image]: https://badge.fury.io/js/downloadjs.svg
+[npm-url]: https://www.npmjs.com/package/ngx-adal-8
+[license-image]: https://img.shields.io/badge/license-MIT-green.svg
+[license-url]: http://opensource.org/licenses/MIT
+
 

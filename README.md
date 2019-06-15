@@ -142,9 +142,9 @@ Then use guards on the specific children routes.
 
 
 **Couldn't have done this without**
-1. Help from with AngularJS back in 2016 [Tushar Grupta](https://github.com/tushargupta51)
+1. Help with ADAL back in 2016 [Tushar Grupta](https://github.com/tushargupta51)
 2. [ms-adal-angular6](https://github.com/manishrasrani/ms-adal-angular6)
-
+3. Several questions/answers on GitHub
 
 
 [MIT license]: http://opensource.org/licenses/MIT
