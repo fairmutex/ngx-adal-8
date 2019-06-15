@@ -1,0 +1,27 @@
+{
+  "name": "ngx-adal",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.0.1",
+    "@angular/core": "^8.0.1"
+  },
+  "description": "Angular 2+ ADAL Wrapper library",
+  "main": "karma.conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fairmutex/ngx-adal.git"
+  },
+  "keywords": [
+    "ADAL", "Angular", "Angular7", "Angular8","Azure AD","Authentication"
+  ],
+  "author": "Stephan Galea",
+  "url": "https://www.linkedin.com/in/stephan-galea-803a308b/",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fairmutex/ngx-adal/issues"
+  },
+  "homepage": "https://github.com/fairmutex/ngx-adal#readme"
+}

@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-adal": [
+        "dist/ngx-adal"
+      ],
+      "ngx-adal/*": [
+        "dist/ngx-adal/*"
+      ]
+    }
   }
 }

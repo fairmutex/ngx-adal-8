@@ -25,7 +25,8 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/frameRedirect.html"
             ],
             "styles": [
               "src/styles.scss"
@@ -85,7 +86,8 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/frameRedirect.html"
             ],
             "styles": [
               "src/styles.scss"
@@ -116,6 +118,41 @@
             "production": {
               "devServerTarget": "angular8-adal:serve:production"
             }
+          }
+        }
+      }
+    },
+    "ngx-adal": {
+      "projectType": "library",
+      "root": "projects/ngx-adal",
+      "sourceRoot": "projects/ngx-adal/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-adal/tsconfig.lib.json",
+            "project": "projects/ngx-adal/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-adal/src/test.ts",
+            "tsConfig": "projects/ngx-adal/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-adal/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-adal/tsconfig.lib.json",
+              "projects/ngx-adal/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
