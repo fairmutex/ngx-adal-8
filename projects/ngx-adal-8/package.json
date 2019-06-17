@@ -1,6 +1,6 @@
 {
   "name": "ngx-adal-8",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "peerDependencies": {
   },
   "description": "Angular 2+ ADAL Wrapper library",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fairmutex/angular8-adal.git"
+    "url": "git+https://github.com/fairmutex/ngx-adal-8.git"
   },
   "keywords": [
     "ADAL",
@@ -24,7 +24,7 @@
   "url": "https://www.linkedin.com/in/stephan-galea-803a308b/",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fairmutex/angular8-adal/issues"
+    "url": "https://github.com/fairmutex/ngx-adal-8/issues"
   },
-  "homepage": "https://github.com/fairmutex/angular8-adal#readme"
+  "homepage": "https://github.com/fairmutex/ngx-adal-8#readme"
 }
