@@ -3,21 +3,20 @@
 
 # Active Directory Authentication Library (ADAL) wrapper for (Angular X)
 
-This library is a wrapper taking consideration different scenarios of how ADAL should be used with Angular 2+ without importing adal-angular in package.json   
-   
+This library is a wrapper taking consideration different scenarios of how ADAL should be used with Angular 2+ without importing adal-angular in package.json    
    
 Reason:   
-You do not need to install  "adal-angular": "^1.0.17"    
-as that library is composed of adal.js and adal-angular.js   
-
+You do not need to install  "adal-angular": "^1.0.17" as that library is composed of adal.js and adal-angular.js.    
 adal-angular.js is the library for AngularJS meaning anything prior to Angular 2     
 adal.js is where the code we need is however since we need this file included in more than    
 one place installing this library is just plain redundant as we will still need to link    
-directly to adal.js and Microsoft put it in their CDN for us or you could host it in your assets folder.
+directly to adal.js and Microsoft serve it in their CDN for us or you could host it in your assets folder.
 
 https://secure.aadcdn.microsoftonline-p.com/lib/1.0.17/js/adal.min.js
 
-Sample App using this library at https://github.com/fairmutex/ngx-adal-8-sample
+Also solutions revolving auth-callback.component.ts are wrong as ADAL will load the application a second time inside an iframe. So instead we load a frameRedirect.html inside the iframe just like we did in angularJS to avoid infinite loop. 
+
+Samples using this library at https://github.com/fairmutex/ngx-adal-8-samples these follow the the below instructions.
 
 
 Registering Angular application with Azure can be found [here](http://wpblog.fairmutex.com/2019/06/15/registering-an-angular-app-with-azure/)   
@@ -116,8 +115,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-    { path: '', component: AppComponent, pathMatch:'full', canActivate: [NgxAdalGuard]}
-];
+  { path: 'secured', component: SecuredComponent, pathMatch:'full', canActivate: [NgxAdalGuard]},
+  { path: 'unsecured', component: UnsecuredComponent, pathMatch:'full'},
+  { path: '**', redirectTo:'unsecured'}
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
@@ -151,9 +152,6 @@ Then use guards on the specific children routes.
 1. Help with ADAL back in 2016 [Tushar Grupta](https://github.com/tushargupta51)
 2. [ms-adal-angular6](https://github.com/manishrasrani/ms-adal-angular6)
 3. Several questions/answers on GitHub
-
-
-
 
 [MIT license]: http://opensource.org/licenses/MIT
 [npm-image]: https://badge.fury.io/js/downloadjs.svg
