@@ -7,9 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxAdalModule } from 'ngx-adal';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,14 +17,14 @@ import { NgxAdalModule } from 'ngx-adal';
       clientId: `c0622ca0-df1f-4dd2-8175-9dfa840e1dee`,
 
       endpoints: {
-        'MyAPIURL': 'MyAPIClientID',
+        MyAPIURL: 'MyAPIClientID'
       },
-      redirectUri: `frameRedirect.html`, 
+      redirectUri: `frameRedirect.html`,
       postLogoutRedirectUri: `frameRedirect.html`,
-      cacheLocation: 'localStorage',
-    }),
+      cacheLocation: 'localStorage'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

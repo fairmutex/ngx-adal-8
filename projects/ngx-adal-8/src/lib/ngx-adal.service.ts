@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import {  bindCallback } from 'rxjs';
+import { bindCallback } from 'rxjs';
 
 declare var AuthenticationContext: any;
 
@@ -7,13 +7,12 @@ declare var AuthenticationContext: any;
   providedIn: 'root'
 })
 export class NgxAdalService {
-   private context: typeof AuthenticationContext;
+  private context: typeof AuthenticationContext;
 
-  constructor(
-    @Inject('adalConfig') private adalConfig: any) {
-      adalConfig.redirectUri =`${window.location.origin}/${adalConfig.redirectUri}`,
-      adalConfig.postLogoutRedirectUri =`${window.location.origin}/${adalConfig.postLogoutRedirectUri}`,
-    this.context = new AuthenticationContext(adalConfig);
+  constructor(@Inject('adalConfig') private adalConfig: any) {
+    (adalConfig.redirectUri = `${window.location.origin}/${adalConfig.redirectUri}`),
+      (adalConfig.postLogoutRedirectUri = `${window.location.origin}/${adalConfig.postLogoutRedirectUri}`),
+      (this.context = new AuthenticationContext(adalConfig));
     this.handleCallback();
   }
 
@@ -52,16 +51,16 @@ export class NgxAdalService {
 
   public RenewToken(url: string) {
     const resource = this.GetResourceForEndpoint(url);
-    return this.context.clearCacheForResource(resource); // Trigger the ADAL token renew 
+    return this.context.clearCacheForResource(resource); // Trigger the ADAL token renew
   }
 
   public acquireToken(url: string) {
-    const _this = this;   // save outer this for inner function
+    const _this = this; // save outer this for inner function
     let errorMessage: string;
 
     return bindCallback(acquireTokenInternal, (token: string) => {
       if (!token && errorMessage) {
-        throw (errorMessage);
+        throw errorMessage;
       }
       return token;
     })();
@@ -87,7 +86,6 @@ export class NgxAdalService {
   }
 
   public getToken(url: string): string {
-
     const resource = this.context.getResourceForEndpoint(url);
     const storage = this.adalConfig.cacheLocation;
     let key;
@@ -116,7 +114,6 @@ export class NgxAdalService {
   }
 
   public get isAuthenticated(): boolean {
-
-    return (this.userInfo && this.accessToken) ? true : false;
+    return this.userInfo && this.accessToken ? true : false;
   }
 }
