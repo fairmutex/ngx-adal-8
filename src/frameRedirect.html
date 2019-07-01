@@ -1,22 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Frame Redirect</title>
     <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.17/js/adal.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        var adalConfig = {
-            clientId: "c0622ca0-df1f-4dd2-8175-9dfa840e1dee"
-        };
-        var authContext = new AuthenticationContext(adalConfig);
-        authContext.handleWindowCallback();
+      var adalConfig = {
+        clientId: 'c0622ca0-df1f-4dd2-8175-9dfa840e1dee'
+      };
+      var authContext = new AuthenticationContext(adalConfig);
+      authContext.handleWindowCallback();
 
-        if (window === window.parent) { window.location.replace(location.origin + location.hash); }
+      if (window === window.parent) {
+        window.location.replace(location.origin + location.hash);
+      }
     </script>
-</body>
-
+  </body>
 </html>

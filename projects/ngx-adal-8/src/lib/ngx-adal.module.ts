@@ -6,43 +6,32 @@ import { NgxAdalGuard } from './ngx-adal.guard';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   providers: [
     NgxAdalGuard,
     NgxAdalService,
     {
-        provide: HTTP_INTERCEPTORS,
-        useClass: NgxAdalInterceptor,
-        multi: true
+      provide: HTTP_INTERCEPTORS,
+      useClass: NgxAdalInterceptor,
+      multi: true
     }
-]
+  ]
 })
-export class NgxAdalModule { 
-
+export class NgxAdalModule {
   constructor(@Optional() @SkipSelf() parentModule: NgxAdalModule) {
     // https://angular.io/styleguide#!#04-12
     if (parentModule) {
-        throw new Error(
-            'NgxAdalModule is already loaded. Import it in the AppModule only');
+      throw new Error('NgxAdalModule is already loaded. Import it in the AppModule only');
     }
-}
+  }
 
-
-static forRoot(adalConfig: any): ModuleWithProviders {
-  return {
+  static forRoot(adalConfig: any): ModuleWithProviders {
+    return {
       ngModule: NgxAdalModule,
-      providers: [
-          [NgxAdalService, { provide: 'adalConfig', useValue: adalConfig }]
-      ]
-  };
+      providers: [[NgxAdalService, { provide: 'adalConfig', useValue: adalConfig }]]
+    };
+  }
 }
-
-
-}
-
-
 
 // https://www.npmjs.com/package/microsoft-adal-angular6
 
@@ -57,5 +46,3 @@ static forRoot(adalConfig: any): ModuleWithProviders {
 // import { HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { AuthenticationInterceptor } from './ngx-adal.interceptor';
 // import { NgxAdalService } from './ngx-adal.service';
-
-

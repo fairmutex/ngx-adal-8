@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NgxAdalService} from 'ngx-adal-8';
+import { NgxAdalService } from 'ngx-adal-8';
 
 @Component({
   selector: 'app-root',
@@ -9,21 +9,20 @@ import {NgxAdalService} from 'ngx-adal-8';
 export class AppComponent {
   title = 'angular8-adal';
 
-  constructor(private authService:NgxAdalService){
+  constructor(private authService: NgxAdalService) {
     if (!this.authService.isAuthenticated) {
       this.authService.login();
     }
 
     window['Logging'] = {
       level: 3,
-      log: (message) => {
+      log: message => {
         console.log(message);
       }
     };
-
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
   }
 }
