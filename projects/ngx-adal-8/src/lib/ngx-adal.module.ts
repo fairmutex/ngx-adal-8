@@ -4,7 +4,7 @@ import { NgxAdalInterceptor } from './ngx-adal.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxAdalGuard } from './ngx-adal.guard';
 import { CommonModule } from '@angular/common';
-import { ADAL_CONFIG, authContextFactory, AUTHENTICATION_CONTEXT } from './di_tokens';
+// import { ADAL_CONFIG, authContextFactory, AUTHENTICATION_CONTEXT } from './di_tokens';
 
 @NgModule({
   imports: [CommonModule],
@@ -29,18 +29,25 @@ export class NgxAdalModule {
   static forRoot(adalConfig: any): ModuleWithProviders {
     return {
       ngModule: NgxAdalModule,
-      providers: [
-        [
-          NgxAdalService,
-          { provide: ADAL_CONFIG, useValue: adalConfig },
-          {
-            provide: AUTHENTICATION_CONTEXT,
-            useFactory: authContextFactory
-          }
-        ]
-      ]
+      providers: [[NgxAdalService, { provide: 'adalConfig', useValue: adalConfig }]]
     };
   }
+
+  // static forRoot(adalConfig: any): ModuleWithProviders {
+  //   return {
+  //     ngModule: NgxAdalModule,
+  //     providers: [
+  //       [
+  //         NgxAdalService,
+  //         { provide: ADAL_CONFIG, useValue: adalConfig },
+  //         {
+  //           provide: AUTHENTICATION_CONTEXT,
+  //           useFactory: authContextFactory
+  //         }
+  //       ]
+  //     ]
+  //   };
+  // }
 }
 
 // https://www.npmjs.com/package/microsoft-adal-angular6

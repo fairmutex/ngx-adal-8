@@ -15,8 +15,8 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2018", "dom"],
     "paths": {
-      "ngx-adal": ["dist/ngx-adal"],
-      "ngx-adal/*": ["dist/ngx-adal/*"]
+      "ngx-adal-8": ["dist/ngx-adal-8"],
+      "ngx-adal-8/*": ["dist/ngx-adal-8/*"]
     }
   }
 }

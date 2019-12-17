@@ -1,2 +1,8 @@
-<button (click)="logout()">Log Out</button>
+<button *ngIf="!authService.isAuthenticated" (click)="login()">Log In</button>
+<button *ngIf="authService.isAuthenticated" (click)="logout()">Log Out</button>
+<ol>
+  <li *ngFor="let value of values">{{ value }}</li>
+</ol>
+<button (click)="getValues()">Get Values From API</button>
+<button (click)="getValuesAnon()">Get Values From Anonymous API</button>
 <router-outlet></router-outlet>

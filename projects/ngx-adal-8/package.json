@@ -1,6 +1,6 @@
 {
   "name": "ngx-adal-8",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "peerDependencies": {
   },
   "description": "Angular 2+ ADAL Wrapper library",

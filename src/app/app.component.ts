@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgxAdalService } from 'ngx-adal-8';
+import { APIService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +8,9 @@ import { NgxAdalService } from 'ngx-adal-8';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular8-adal';
+  values: string[];
 
-  constructor(private authService: NgxAdalService) {
-    if (!this.authService.isAuthenticated) {
-      this.authService.login();
-    }
-
+  constructor(private authService: NgxAdalService, private apiService: APIService) {
     window['Logging'] = {
       level: 3,
       log: message => {
@@ -22,7 +19,19 @@ export class AppComponent {
     };
   }
 
+  login() {
+    this.authService.login();
+  }
+
   logout() {
     this.authService.logout();
+  }
+
+  getValues() {
+    this.apiService.getValues().subscribe(values => (this.values = values));
+  }
+
+  getValuesAnon() {
+    this.apiService.getValuesAnon().subscribe(values => (this.values = values));
   }
 }

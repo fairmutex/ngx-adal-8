@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxAdalModule } from 'ngx-adal';
+import { NgxAdalModule } from 'ngx-adal-8';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,8 +17,9 @@ import { NgxAdalModule } from 'ngx-adal';
       clientId: `c0622ca0-df1f-4dd2-8175-9dfa840e1dee`,
 
       endpoints: {
-        MyAPIURL: 'MyAPIClientID'
+        'https://localhost:44344/api/values': '4cee322a-42cc-44f2-9540-9d7fd69b0659'
       },
+      anonymousEndpoints: ['https://localhost:44344/api/values/get1'],
       redirectUri: `frameRedirect.html`,
       postLogoutRedirectUri: `frameRedirect.html`,
       cacheLocation: 'localStorage'

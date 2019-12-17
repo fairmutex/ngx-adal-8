@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
-import {bindCallback, Observable} from 'rxjs';
-import {ADAL_CONFIG, AUTHENTICATION_CONTEXT} from './di_tokens';
-import {map} from 'rxjs/operators';
+import { bindCallback, Observable } from 'rxjs';
+// import {ADAL_CONFIG, AUTHENTICATION_CONTEXT} from './di_tokens';
+import { map } from 'rxjs/operators';
 
 declare var AuthenticationContext;
 
@@ -11,10 +11,17 @@ declare var AuthenticationContext;
 export class NgxAdalService {
   private context: typeof AuthenticationContext;
 
-  constructor(
-    @Inject(ADAL_CONFIG) private adalConfig: any, @Inject(AUTHENTICATION_CONTEXT) private context: typeof AuthenticationContext) {
+  constructor(@Inject('adalConfig') private adalConfig: any) {
+    (adalConfig.redirectUri = `${window.location.origin}/${adalConfig.redirectUri}`),
+      (adalConfig.postLogoutRedirectUri = `${window.location.origin}/${adalConfig.postLogoutRedirectUri}`),
+      (this.context = new AuthenticationContext(adalConfig));
     this.handleCallback();
   }
+
+  // constructor(
+  //   @Inject(ADAL_CONFIG) private adalConfig: any, @Inject(AUTHENTICATION_CONTEXT) private context: typeof AuthenticationContext) {
+  //   this.handleCallback();
+  // }
 
   public get LoggedInUserEmail() {
     if (this.isAuthenticated) {
@@ -39,14 +46,15 @@ export class NgxAdalService {
   }
 
   public GetResourceForEndpoint(url: string): string {
-    let resource = null;
-    if (url) {
-      resource = this.context.getResourceForEndpoint(url);
-      if (!resource) {
-        resource = this.adalConfig.clientId;
-      }
-    }
-    return resource;
+    return this.context.getResourceForEndpoint(url);
+    // let resource = null;
+    // if (url) {
+    //   resource = this.context.getResourceForEndpoint(url);
+    //   if (!resource) {
+    //     resource = this.adalConfig.clientId;
+    //   }
+    // }
+    // return resource;
   }
 
   public RenewToken(url: string): Observable<string> {
@@ -58,12 +66,14 @@ export class NgxAdalService {
     const _this = this; // save outer this for inner function
     let errorMessage: string;
 
-    return bindCallback(acquireTokenInternal)().pipe(map((token: string) => {
-      if (!token && errorMessage) {
-        throw errorMessage;
-      }
-      return token;
-    }));
+    return bindCallback(acquireTokenInternal)().pipe(
+      map((token: string) => {
+        if (!token && errorMessage) {
+          throw errorMessage;
+        }
+        return token;
+      })
+    );
 
     function acquireTokenInternal(cb: (token: string) => string) {
       let s: string = null;
