@@ -18,17 +18,12 @@ export class NgxAdalInterceptor implements HttpInterceptor {
       this.adal.RenewToken(request.url);
     }
 
-    return this.adal.acquireToken(request.url).pipe(
-      mergeMap((token: string) => {
-        const authorizedRequest = request.clone({
-          setHeaders: {
-            Authorization: 'Bearer ' + token,
-            'content-Type': 'application/json; charset=utf-8',
-            Accept: 'application/json'
-          }
-        });
-        return next.handle(authorizedRequest);
-      })
-    );
+    request = request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${this.adal.accessToken}`
+      }
+    });
+
+    return next.handle(request);
   }
 }
